@@ -168,7 +168,7 @@
               >
                 <template v-slot:activator="{ on, attrs }">
                   <v-text-field
-                    v-model="date"
+                    v-model="date_of_arrival"
                     label="Prefered date of arrival"
                     readonly
                     v-bind="attrs"
@@ -180,14 +180,14 @@
                   ></v-text-field>
                 </template>
                 <v-date-picker
-                  v-model="date"
+                  v-model="date_of_arrival"
                   @input="menu_start = false"
                 ></v-date-picker>
               </v-menu>
             </div>
             <div class="px-4">
               <v-select
-                v-model="persons"
+                v-model="total_guests"
                 :items="items"
                 label="Number of guests"
                 dense
@@ -195,7 +195,8 @@
               ></v-select>
             </div>
             <div class="d-flex justify-center">
-              <v-btn class="button my-3" dark x-large rounded>
+              <v-btn class="button my-3" dark x-large rounded @click="addReservation">
+                <v-progress-circular v-if="loading" class="mr-2" indeterminate color="" size="18" width="1.5" />
                 SUBMIT YOUR ENQUIRY
               </v-btn>
             </div>
@@ -242,12 +243,13 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   data: () => ({
     ex7: '',
-    persons: '',
+    total_guests: '',
     menu_start: false,
-    date: null,
+    date_of_arrival: null,
     items: [
       {text: '2 Adults', value: 2},
       {text: '3 Adults', value: 3},
@@ -267,7 +269,25 @@ export default {
       {text: '17 Adults', value: 17},
       {text: '18 Adults', value: 18},
     ],
+    loading: false
   }),
+  methods: {
+    ...mapActions(['ADD_RESERVATION', 'FETCH_ALL_RESERVATION']),
+    async addReservation() {
+      let Payload = {
+        total_guests : this.total_guests,
+        date_of_arrival : this.date_of_arrival
+      }
+      this.loading = true
+      try{
+        let addition = await this.ADD_RESERVATION(Payload)
+        console.log(addition);
+      }catch(e){
+        console.log('Error: '+ e);
+      }
+      this.loading = false
+    }
+  }
 }
 </script>
 

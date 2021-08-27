@@ -9,11 +9,11 @@
 </template>
 
 <script>
-  import OfferSection from '@/components/home/OfferSection'
-  import ActivitySection from '@/components/home/ActivitySection'
-  import AboutRoom from '@/components/home/AboutRoom'
-  import ReviewSection from '@/components/home/ReviewSection'
-  import LocationSection from '@/components/home/LocationSection'
+  import OfferSection from '@/components/app/home/OfferSection'
+  import ActivitySection from '@/components/app/home/ActivitySection'
+  import AboutRoom from '@/components/app/home/AboutRoom'
+  import ReviewSection from '@/components/app/home/ReviewSection'
+  import LocationSection from '@/components/app/home/LocationSection'
 
   export default {
     components: {

@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import PublicHeader from '@/components/navigation/Header'
-import PublicFooter from '@/components/navigation/Footer'
+import PublicHeader from '@/components/app/navigation/Header'
+import PublicFooter from '@/components/app/navigation/Footer'
 export default {
   components:{
     PublicHeader,
