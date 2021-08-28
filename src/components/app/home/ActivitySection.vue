@@ -285,6 +285,8 @@ export default {
       }catch(e){
         console.log('Error: '+ e);
       }
+      this.total_guests = null
+      this.date_of_arrival = ''
       this.loading = false
     }
   }
