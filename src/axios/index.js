@@ -1,7 +1,7 @@
 import axios from 'axios'
 import store from '@/store'
 
-const baseUrl = 'http://localhost:3000/api/'
+const baseUrl = 'https://product--app.herokuapp.com/api/'
 
 const axiosInstance = axios.create({
   headers:{
